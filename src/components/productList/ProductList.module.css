@@ -1,0 +1,83 @@
+.productListCard {
+  width: 100%;
+  height: 320px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px 1px #00000029;
+  transition: all 0.25s ease-in-out;
+}
+
+.productListCard:hover {
+  box-shadow: 3px 3px 1px #97a8d2;
+  transform: translate3d(-2px, -2px, -2px);
+}
+
+.imageCard {
+  width: 100%;
+  height: 220px;
+  background-color: #dfdfdf;
+}
+
+.descriptionCard {
+  width: 90%;
+  height: 80px;
+  padding: 5px;
+}
+
+.productTitleDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.productTitle {
+  font-style: normal;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 200;
+}
+.productRating {
+  font-style: normal;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 100;
+  color: #9b9b9b;
+}
+.description {
+  max-height: 30px;
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-style: normal;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 100;
+  font-size: 10pt;
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  box-shadow: 0px 2px 2px #00000029;
+  transition: all 0.25s ease-in-out;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.paginationDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  height: 80px;
+  background: #ffffff;
+  overflow: hidden;
+  z-index: 1000;
+}

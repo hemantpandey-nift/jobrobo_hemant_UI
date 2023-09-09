@@ -1,0 +1,26 @@
+.searchBox {
+  position: relative;
+  margin-left: 30px;
+}
+.searchBox .searchBoxInput {
+  min-width: 350px;
+  max-width: 480px;
+  padding: 8px 30px 10px 40px;
+  border-radius: 10px;
+  position: relative;
+  background-color: #dfdfdf;
+  border: none;
+}
+.searchBox .searchBoxInput:focus {
+  outline: none;
+}
+.searchBox .searchBoxIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 25px;
+  font-weight: 200;
+  z-index: 99999;
+  color: #9b9b9b;
+}
