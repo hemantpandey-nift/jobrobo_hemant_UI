@@ -5,12 +5,14 @@ import styles from "./SearchBox.module.css";
 interface searchProps {
   children?: ReactNode;
   setSearch: any;
+  setCategory: any;
 }
 
 const SearchBox: React.FC<searchProps> = (props) => {
   const handleSearchChange: any = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    props.setCategory("");
     props.setSearch(event?.target?.value);
   };
   return (

@@ -15,6 +15,7 @@ import {
 import bbLogo from "../../images/bb_logo.png";
 import LoginDialog from "../login/LoginDialog";
 import { getLoggedUserData, userLogout } from "../../utils/helper";
+import CategoryListDialog from "../categories/CategoryListDialog";
 
 const Img = styled("img")({
   margin: "auto",
@@ -26,20 +27,21 @@ const Img = styled("img")({
 const ProductList: React.FC = () => {
   const [search, setSearch] = React.useState("");
   const [openLogin, setOpenLogin] = React.useState(false);
+  const [openCategory, setOpenCategory] = React.useState(false);
   const [toggle, setToggle] = React.useState(false);
   const [userData, setUserData] = React.useState({ user_name: "" });
   const [cartProducts, setCartProducts] = React.useState(0);
-
+  const [category, setCategory] = React.useState("");
   useEffect(() => {
     const user: any = getLoggedUserData();
     setUserData(user);
   }, [toggle]);
 
   const productData = useSelector(productState);
-
-  const productsList: any[] = search
-    ? productData?.allProductsData?.productList
-    : productData?.topProductsData?.productList;
+  const productsList: any[] =
+    search || category
+      ? productData?.allProductsData?.productList
+      : productData?.topProductsData?.productList;
 
   const loading = productData?.loading ?? true;
 
@@ -54,14 +56,15 @@ const ProductList: React.FC = () => {
   };
 
   useEffect(() => {
-    const params: any = { search };
+    let params: any = {};
+    params = search ? { search } : category ? { category } : params;
 
-    if (!search) {
+    if (!search && !category) {
       dispatch(fetchTopProductsList(params));
     } else {
       dispatch(fetchAllProductsList(params));
     }
-  }, [dispatch, search]);
+  }, [dispatch, search, category]);
 
   return (
     <>
@@ -79,11 +82,18 @@ const ProductList: React.FC = () => {
             <div>
               <Img src={bbLogo} />
             </div>
-            <button className={styles.shopCategoryDiv}>
+            <button
+              className={styles.shopCategoryDiv}
+              onClick={() => {
+                setOpenCategory(true);
+                setSearch("");
+              }}
+            >
               <div className={styles.shopCategoryText}>Shop by</div>
               <div className={styles.shopCategoryText}>Category</div>
             </button>
-            <SearchBox setSearch={setSearch} />
+
+            <SearchBox setSearch={setSearch} setCategory={setCategory} />
             {!userData.user_name ? (
               <button className={styles.loginDiv} onClick={loginHandler}>
                 Login/Sign Up
@@ -158,6 +168,14 @@ const ProductList: React.FC = () => {
           addDialog={openLogin}
           setAddDialog={setOpenLogin}
           setToggle={setToggle}
+        />
+      )}
+      {openCategory && (
+        <CategoryListDialog
+          addDialog={openCategory}
+          setAddDialog={setOpenCategory}
+          setCategory={setCategory}
+          setSearch={setSearch}
         />
       )}
     </>
