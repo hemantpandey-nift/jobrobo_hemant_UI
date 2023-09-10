@@ -16,10 +16,9 @@ const SearchBox: React.FC<searchProps> = (props) => {
   return (
     <>
       <div className={styles.searchBox}>
-        <SearchIcon className={styles.searchBoxIcon} />
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Search For Products..."
           onChange={handleSearchChange}
           className={styles.searchBoxInput}
         />

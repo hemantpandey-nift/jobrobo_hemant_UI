@@ -7,7 +7,6 @@ export const fetchTopProductsList = createAsyncThunk(
   async (params: any, { rejectWithValue }) => {
     try {
       const data: any = await http.get(END_POINTS.GET_TOP_PRODUCTS);
-      console.log("data---------------", data);
       return data;
     } catch (error: any) {
       console.log(error);
@@ -21,7 +20,6 @@ export const fetchAllProductsList = createAsyncThunk(
   async (params: any, { rejectWithValue }) => {
     try {
       const data: any = await http.get(END_POINTS.GET_ALL_PRODUCTS, { params });
-      console.log("data---------------", data);
       return data;
     } catch (error: any) {
       console.log(error);
