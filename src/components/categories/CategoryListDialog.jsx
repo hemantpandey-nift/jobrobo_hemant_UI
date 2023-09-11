@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import {
   MDBDropdown,
   MDBDropdownMenu,
-  MDBDropdownToggle,
   MDBDropdownItem,
-  MDBContainer,
 } from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
 import "../../App.css";
 import { Dialog, DialogContent } from "@mui/material";
 import styles from "./CategoryList.module.css";
@@ -24,8 +21,8 @@ export default function CategoryListDialog({
 
   const productData = useSelector(productState);
   const categoryList = productData?.allCategoriesData?.categoryList;
-    const loading = productData?.loading ?? true;
- 
+  const loading = productData?.loading ?? true;
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -62,7 +59,7 @@ export default function CategoryListDialog({
                       {data.subCategories.map((sub) => {
                         return (
                           <MDBDropdownItem>
-                            <Link href="#">{sub.sub_category_name}</Link>
+                            <div href="#">{sub.sub_category_name}</div>
                           </MDBDropdownItem>
                         );
                       })}
